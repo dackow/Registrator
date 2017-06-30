@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.Globals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Model
     public class Patient : Person
     {
         [Display(Name = "Płeć:")]
-        public string Sex { get; set; }
+        public Sex Sex { get; set; }
 
         [Display(Name = "PESEL")]
         public string Pesel { get; set; }
