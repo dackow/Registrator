@@ -1,4 +1,5 @@
 ﻿using Model.Abstract;
+using Model.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,36 +17,41 @@ namespace Model.Repositories
             ctx = context;
         }
 
-        public IEnumerable<Concrete.Enrollment> GetAllEnrollments()
+        public IEnumerable<Enrollment> GetAllEnrollments()
         {
-            return ctx.Enrollments;
+            return ctx.Enrollments.ToList();
         }
 
-        public IEnumerable<Concrete.Enrollment> GetEnrollmentsForDate(DateTime date)
+        public IEnumerable<Enrollment> GetEnrollmentsForDate(DateTime date)
         {
-            //DateTime? d = date.
-            //var q = ctx.Enrollments.Where(x=>x.Date_from);
-            return null;
+            return ctx.Enrollments.Where(x => x.Date_from.Value.Year == date.Year && x.Date_from.Value.Month == date.Month && x.Date_from.Value.Day == date.Day).ToList();
         }
 
-        public IEnumerable<Concrete.Enrollment> GetEnrollmentsForDoctor(Doctor doctor, DateTime date)
+        public IEnumerable<Enrollment> GetEnrollmentsForDoctor(Doctor doctor, DateTime date)
         {
-            throw new NotImplementedException();
+            return ctx.Enrollments.Where(x => x.Doctor == doctor)
+                                   .Where(x => x.Date_from.Value.Year == date.Year && x.Date_from.Value.Month == date.Month && x.Date_from.Value.Day == date.Day).ToList();            
         }
 
-        public bool AddEnrollment(Concrete.Enrollment enrollment)
+        public bool AddEnrollment(Enrollment enrollment)
         {
-            throw new NotImplementedException();
+            ctx.Entry(enrollment).State = System.Data.Entity.EntityState.Added;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
-        public bool DeleteEnrollment(Concrete.Enrollment enrollment)
+        public bool DeleteEnrollment(Enrollment enrollment)
         {
-            throw new NotImplementedException();
+            ctx.Entry(enrollment).State = System.Data.Entity.EntityState.Deleted;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
-        public bool UpdateEnrollment(Concrete.Enrollment enrollment)
+        public bool UpdateEnrollment(Enrollment enrollment)
         {
-            throw new NotImplementedException();
+            ctx.Entry(enrollment).State = System.Data.Entity.EntityState.Modified;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
     }
 }
