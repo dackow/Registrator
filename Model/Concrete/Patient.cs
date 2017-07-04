@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,10 @@ namespace Model
         [Display(Name = "PESEL")]
         public string Pesel { get; set; }
         [Display(Name = "Data urodzenia:")]
-        public DateTime DOB { get; set; }
-        [Display(Name = "Data śmierci:")]
-        public DateTime DOD { get; set; }
+
+        public DateTime? DOB { get; set; }
+        [Display(Name = "Data śmierci:")]      
+        public DateTime? DOD { get; set; }
 
     }
 }

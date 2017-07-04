@@ -1,5 +1,4 @@
-﻿using Model.Concrete;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.Concrete
 {
-    public class Calendar
+    public class WorkDay
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,8 +18,18 @@ namespace Model
         public virtual Doctor Doctor { get; set; }
 
         [Required]
-        public virtual List<WorkDay> WorkDays { get; set; }
+        public int From_hour { get; set; }
+        [Required]
+        public int From_minute { get; set; }
 
-        
+        [Required]
+        public int To_hour { get; set; }
+        [Required]
+        public int To_minute { get; set; }
+
+        [Required]
+        public DayOfWeek Day { get; set; }
+
+        public string UnavailabilityReason { get; set; }
     }
 }

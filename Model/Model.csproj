@@ -11,6 +11,21 @@
     <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,20 +63,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concrete\Calendar.cs" />
+    <Compile Include="Abstract\IPatient.cs" />
     <Compile Include="Concrete\Doctor.cs" />
     <Compile Include="Concrete\Patient.cs" />
     <Compile Include="Abstract\Person.cs" />
     <Compile Include="Concrete\WorkDay.cs" />
-    <Compile Include="DbContext.cs" />
+    <Compile Include="Migrations\201707031324487_Rep.cs" />
+    <Compile Include="Migrations\201707031324487_Rep.Designer.cs">
+      <DependentUpon>201707031324487_Rep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707031333180_Registration1.cs" />
+    <Compile Include="Migrations\201707031333180_Registration1.Designer.cs">
+      <DependentUpon>201707031333180_Registration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707031342528_Registration2.cs" />
+    <Compile Include="Migrations\201707031342528_Registration2.Designer.cs">
+      <DependentUpon>201707031342528_Registration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707031348136_Registration3.cs" />
+    <Compile Include="Migrations\201707031348136_Registration3.Designer.cs">
+      <DependentUpon>201707031348136_Registration3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\PatientsRepository.cs" />
+    <Compile Include="ReservationsContext.cs" />
     <Compile Include="Globals\Globals.cs" />
-    <Compile Include="Helpers\WorkTime.cs" />
+    <Compile Include="Initializer\RegistrationDBInitializer.cs" />
+    <Compile Include="Migrations\201707031046384_Registration.cs" />
+    <Compile Include="Migrations\201707031046384_Registration.Designer.cs">
+      <DependentUpon>201707031046384_Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\RegistrationDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="DB\RegistrationDB_log.ldf">
+      <DependentUpon>RegistrationDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707031046384_Registration.resx">
+      <DependentUpon>201707031046384_Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707031324487_Rep.resx">
+      <DependentUpon>201707031324487_Rep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707031333180_Registration1.resx">
+      <DependentUpon>201707031333180_Registration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707031342528_Registration2.resx">
+      <DependentUpon>201707031342528_Registration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707031348136_Registration3.resx">
+      <DependentUpon>201707031348136_Registration3.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
