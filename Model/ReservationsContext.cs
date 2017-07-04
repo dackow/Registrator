@@ -16,7 +16,7 @@ namespace Model
         {
             Database.SetInitializer(new RegistrationDBInitializer());
         }
-        dupa lalala
+        dupa lalalajózek 
         public virtual DbSet<WorkDay> WorkDays { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
