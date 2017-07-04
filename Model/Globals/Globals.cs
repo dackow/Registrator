@@ -46,4 +46,15 @@ namespace Model.Globals
         [Display(Name = "Nieznany")]
         Unknown
     }
+
+    public enum EnrollmentStatus
+    { 
+        [Display(Name="Aktywny")]
+        Active,
+        [Display(Name = "Nieważny")]
+        Cancelled,
+        [Display(Name = "Do potwierdzenia")]
+        ToBeConfirmed,
+
+    }
 }

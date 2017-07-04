@@ -21,6 +21,8 @@ namespace Model.Abstract
         bool DeleteDoctor(Doctor doctor);
 
         bool AddDoctor(Doctor doctor);
+
+        IList<DayOfWeek> GetDoctorSchedule(Doctor doctor);
     }
 
 
