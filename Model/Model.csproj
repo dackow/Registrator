@@ -95,10 +95,14 @@
     <Compile Include="Migrations\201707040822324_Registrator1.Designer.cs">
       <DependentUpon>201707040822324_Registrator1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707041410101_Registration4.cs" />
+    <Compile Include="Migrations\201707041410101_Registration4.Designer.cs">
+      <DependentUpon>201707041410101_Registration4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\DoctorRepository.cs" />
     <Compile Include="Repositories\EnrollmentRepository.cs" />
     <Compile Include="Repositories\PatientsRepository.cs" />
-    <Compile Include="ReservationsContext.cs" />
+    <Compile Include="RegistrationsContext.cs" />
     <Compile Include="Globals\Globals.cs" />
     <Compile Include="Initializer\RegistrationDBInitializer.cs" />
     <Compile Include="Migrations\201707031046384_Registration.cs" />
@@ -162,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707040822324_Registrator1.resx">
       <DependentUpon>201707040822324_Registrator1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707041410101_Registration4.resx">
+      <DependentUpon>201707041410101_Registration4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

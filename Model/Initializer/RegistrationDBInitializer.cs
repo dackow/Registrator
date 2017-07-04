@@ -10,6 +10,11 @@ namespace Model.Initializer
 {
     public class RegistrationDBInitializer : DropCreateDatabaseAlways<RegistrationsContext>
     {
+        public void AutoInitialize(RegistrationsContext context)
+        {
+            Seed(context);
+        }
+
         protected override void Seed(RegistrationsContext context)
         {
 

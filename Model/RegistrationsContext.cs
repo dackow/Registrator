@@ -13,15 +13,19 @@ namespace Model
     {
         public RegistrationsContext()
             : base("RegistrationCS")
-        {
+        {                    
             Database.SetInitializer(new RegistrationDBInitializer());
+        }
+
+        public RegistrationsContext(RegistrationDBInitializer initializer)
+            : base("RegistrationCS")
+        {
+            Database.SetInitializer(initializer);
         }
 
         public virtual DbSet<WorkDay> WorkDays { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
-        
-        
     }
 }
