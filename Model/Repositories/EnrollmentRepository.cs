@@ -23,8 +23,9 @@ namespace Model.Repositories
 
         public IEnumerable<Concrete.Enrollment> GetEnrollmentsForDate(DateTime date)
         {
-            DateTime? d = date.
+            //DateTime? d = date.
             //var q = ctx.Enrollments.Where(x=>x.Date_from);
+            return null;
         }
 
         public IEnumerable<Concrete.Enrollment> GetEnrollmentsForDoctor(Doctor doctor, DateTime date)

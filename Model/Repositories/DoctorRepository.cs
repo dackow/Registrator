@@ -1,4 +1,5 @@
 ﻿using Model.Abstract;
+using Model.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,10 +77,10 @@ namespace Model.Repositories
             return i > 0;
         }
 
-        public IList<DayOfWeek> GetDoctorSchedule(Doctor doctor)
+        public IEnumerable<WorkDay> GetDoctorSchedule(Doctor doctor)
         {
-            if (doctor == null) return null;
-            return doctor.Workdays.Select(x => x.Day) as List<DayOfWeek>;
+            return doctor.Workdays.ToList();
         }
+
     }
 }
