@@ -10,7 +10,7 @@ namespace Model.Abstract
     {
         IEnumerable<Doctor> GetAllDoctors();
 
-        IEnumerable<Doctor> GetDoctorsAvailableAt(Globals.DoctorType type, IList<DayOfWeek> days);
+        IEnumerable<Doctor> GetDoctorsAvailableAt(Globals.DoctorType type, DayOfWeek day);
 
         Doctor GetDoctor(int id);
         Doctor GetDoctor(Globals.DoctorType type);
