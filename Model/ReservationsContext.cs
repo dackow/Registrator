@@ -16,7 +16,7 @@ namespace Model
         {
             Database.SetInitializer(new RegistrationDBInitializer());
         }
-        sdfsdf
+
         public virtual DbSet<WorkDay> WorkDays { get; set; }
         public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
