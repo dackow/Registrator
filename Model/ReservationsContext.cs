@@ -15,7 +15,6 @@ namespace Model
             : base("RegistrationCS")
         {
             Database.SetInitializer(new RegistrationDBInitializer());
-            //Database.SetInitializer<RegistrationsContext>(new DropCreateDatabaseAlways<RegistrationsContext>());
         }
 
         public virtual DbSet<WorkDay> WorkDays { get; set; }
