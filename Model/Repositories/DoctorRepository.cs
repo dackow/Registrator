@@ -9,49 +9,77 @@ namespace Model.Repositories
 {
     public class DoctorRepository : IDoctor
     {
+        private RegistrationsContext ctx;
+        public DoctorRepository(RegistrationsContext context)
+        {
+            ctx = context;
+        }
         public IEnumerable<Doctor> GetAllDoctors()
         {
-            throw new NotImplementedException();
+            return ctx.Doctors.ToList();
         }
 
-        public IEnumerable<Doctor> GetDoctorsAvailableAt(Globals.DoctorType type, IList<DayOfWeek> days)
+        public IEnumerable<Doctor> GetDoctorsAvailableAt(Globals.DoctorType type, DayOfWeek day)
         {
-            throw new NotImplementedException();
+            return ctx.Doctors.Where(x => x.Type == type && x.Workdays.Any(y=>y.Day == day));
         }
 
         public Doctor GetDoctor(int id)
         {
-            throw new NotImplementedException();
+            return ctx.Doctors.Find(id);
         }
 
         public Doctor GetDoctor(Globals.DoctorType type)
         {
-            throw new NotImplementedException();
+            return ctx.Doctors.Where(x => x.Type == type).FirstOrDefault();
         }
 
         public Doctor GetDoctor(string lastName, string firstName = "", string middleName = "")
         {
-            throw new NotImplementedException();
+            IQueryable<Doctor> q = ctx.Doctors;
+            if (!string.IsNullOrEmpty(lastName))
+            {
+                q = q.Where(x => x.LastName == lastName);
+            }
+
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                q = q.Where(x => x.FirstName == firstName);
+            }
+
+            if (!string.IsNullOrEmpty(middleName))
+            {
+                q = q.Where(x => x.MiddleName == middleName);
+            }
+
+            return q.FirstOrDefault();
         }
 
         public bool UpdateDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+            ctx.Entry(doctor).State = System.Data.Entity.EntityState.Modified;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
         public bool DeleteDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+            ctx.Entry(doctor).State = System.Data.Entity.EntityState.Deleted;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
         public bool AddDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+            ctx.Entry(doctor).State = System.Data.Entity.EntityState.Added;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
         public IList<DayOfWeek> GetDoctorSchedule(Doctor doctor)
         {
-            throw new NotImplementedException();
+            if (doctor == null) return null;
+            return doctor.Workdays.Select(x => x.Day) as List<DayOfWeek>;
         }
     }
 }
