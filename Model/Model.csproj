@@ -96,6 +96,7 @@
       <DependentUpon>201707040822324_Registrator1.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\DoctorRepository.cs" />
+    <Compile Include="Repositories\EnrollmentRepository.cs" />
     <Compile Include="Repositories\PatientsRepository.cs" />
     <Compile Include="ReservationsContext.cs" />
     <Compile Include="Globals\Globals.cs" />

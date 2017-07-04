@@ -14,5 +14,11 @@ namespace Model.Abstract
         IEnumerable<Enrollment> GetEnrollmentsForDate(DateTime date);
 
         IEnumerable<Enrollment> GetEnrollmentsForDoctor(Doctor doctor, DateTime date);
+
+        bool AddEnrollment(Enrollment enrollment);
+
+        bool DeleteEnrollment(Enrollment enrollment);
+
+        bool UpdateEnrollment(Enrollment enrollment);
     }
 }

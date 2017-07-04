@@ -19,6 +19,7 @@ namespace Model
         }
 
         public virtual DbSet<WorkDay> WorkDays { get; set; }
+        public virtual DbSet<Enrollment> Enrollments { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         
