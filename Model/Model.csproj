@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IDoctor.cs" />
     <Compile Include="Abstract\IPatient.cs" />
     <Compile Include="Concrete\Doctor.cs" />
     <Compile Include="Concrete\Patient.cs" />
