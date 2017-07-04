@@ -30,29 +30,46 @@ namespace Model.Repositories
             return ctx.Patients.Where(x => x.Pesel == pesel).FirstOrDefault();
         }
 
-        public Patient GetPatient(string firstName, string lastName, string middleName = "")
+        public Patient GetPatient(string lastName, string firstName = "", string middleName = "")
         {
-             throw new NotImplementedException();
-            //var q = ctx.Patients;
-            //if (!string.IsNullOrEmpty(firstName))
-            //{ 
-            //    q = q.Where(x=>)
-            //}
+            IQueryable<Patient> q = ctx.Patients;
+            if (!string.IsNullOrEmpty(lastName))
+            {
+                q = q.Where(x => x.LastName == lastName);
+            }
+
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                q = q.Where(x => x.FirstName == firstName);
+            }
+
+            if (!string.IsNullOrEmpty(middleName))
+            {
+                q = q.Where(x => x.MiddleName == middleName);
+            }
+
+            return q.FirstOrDefault();
         }
 
         public bool UpdatePatient(Patient patient)
         {
-            throw new NotImplementedException();
+            ctx.Entry(patient).State = System.Data.Entity.EntityState.Modified;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
         public bool DeletePatient(Patient patient)
         {
-            throw new NotImplementedException();
+            ctx.Entry(patient).State = System.Data.Entity.EntityState.Deleted;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
 
         public bool AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            ctx.Entry(patient).State = System.Data.Entity.EntityState.Added;
+            int i = ctx.SaveChanges();
+            return i > 0;
         }
     }
 }

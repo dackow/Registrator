@@ -12,14 +12,12 @@ namespace Model.Abstract
 
         Patient GetPatient(int id);
         Patient GetPatient(string pesel);
-        Patient GetPatient(string firstName, string lastName, string middleName = "");
+        Patient GetPatient(string lastName, string firstName = "", string middleName = "");
 
         bool UpdatePatient(Patient patient);
 
         bool DeletePatient(Patient patient);
 
         bool AddPatient(Patient patient);
-
-
     }
 }
