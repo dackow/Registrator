@@ -24,7 +24,7 @@ namespace Model.Abstract
             return ctx.Set<T>();
         }
 
-        public IEnumerable<T> FindBy(Predicate<T> predicate)
+        protected IEnumerable<T> FindBy(Predicate<T> predicate)
         {
             return ctx.Set<T>().AsEnumerable().ToList().FindAll(predicate).ToList();
         }

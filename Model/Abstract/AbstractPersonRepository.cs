@@ -13,11 +13,13 @@ namespace Model.Repositories
 
         public List<T> FindByNames(string lastName, string firstName = "", string middleName = "")
         {
-            Predicate<T> p1 = x => !string.IsNullOrEmpty(lastName) ? x.LastName == lastName : false;
-            Predicate<T> p2 = x => !string.IsNullOrEmpty(firstName) ? x.FirstName == firstName : true;
-            Predicate<T> p3 = x => !string.IsNullOrEmpty(middleName) ? x.MiddleName == middleName : true;
+            Predicate<T> p1 = x => Helpers.Helpers.CompareStrings(lastName, x.LastName, false);
+            Predicate<T> p2 = x => Helpers.Helpers.CompareStrings(firstName, x.FirstName, true);
+            Predicate<T> p3 = x => Helpers.Helpers.CompareStrings(middleName, x.MiddleName, true);
 
             return ctx.Set<T>().AsEnumerable().ToList().FindAll(Helpers.Helpers.And(p1 + p2 + p3));
         }
+
+        
     }
 }

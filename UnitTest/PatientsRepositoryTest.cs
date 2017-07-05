@@ -15,6 +15,19 @@ namespace UnitTest
     {
         private PatientsRepository repo;
 
+        private static Mock<DbSet<T>> CreateDbSetMock<T>(IEnumerable<T> elements) where T : class
+        {
+            var elementsAsQueryable = elements.AsQueryable();
+            var dbSetMock = new Mock<DbSet<T>>();
+
+            dbSetMock.As<IQueryable<T>>().Setup(m => m.Provider).Returns(elementsAsQueryable.Provider);
+            dbSetMock.As<IQueryable<T>>().Setup(m => m.Expression).Returns(elementsAsQueryable.Expression);
+            dbSetMock.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(elementsAsQueryable.ElementType);
+            dbSetMock.As<IQueryable<T>>().Setup(m => m.GetEnumerator()).Returns(elementsAsQueryable.GetEnumerator());
+
+            return dbSetMock;
+        }
+
         public PatientsRepositoryTest()
         {
             RegistrationDBInitializer initializer = new RegistrationDBInitializer();
@@ -24,23 +37,20 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void GetAllPatients_Test()
+        public void FindAll_Test()
         {
-            
-            //arrange
-            var doctors = new Mock<DbSet<Doctor>>();
-            var patients = new Mock<DbSet<Patient>>();
-            //patients.Setup(x => x.ToList()).Returns(() => { return patients.Object.ToList(); });
-
-            Mock<RegistrationsContext> ctx = new Mock<RegistrationsContext>();
-            ctx.Setup(m => m.Doctors).Returns(doctors.Object);
-            ctx.Setup(m => m.Patients).Returns(patients.Object);
-            //ctx.Setup(m => m.Patients.ToList()).Returns(patients.Object.ToList());
-
-            repo = new PatientsRepository(ctx.Object);
-
-//            List<Patient> all = repo.GetAllPatients().ToList();;
-            //Assert.AreEqual(3, all.Count());
+            List<Patient> all = repo.FindAll().ToList();
+            Assert.AreEqual(3, all.Count());
         }
+
+        [TestMethod]
+        public void FindByNames_Test()
+        {
+            List<Patient> all = repo.FindByNames("dacko", string.Empty, "maciej");
+            Assert.AreEqual(1, all.Count());
+            Assert.AreEqual("Dacko", all[0].LastName);
+        }
+
+        
     }
 }

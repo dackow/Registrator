@@ -22,5 +22,14 @@ namespace Model.Helpers
                 return true;
             };
         }
+
+        public static bool CompareStrings(string s1, string s2, bool default_return_value)
+        {
+            if (string.IsNullOrEmpty(s1))
+            {
+                return default_return_value;
+            }
+            return string.Equals(s1, s2, StringComparison.CurrentCultureIgnoreCase);
+        }
     }
 }
