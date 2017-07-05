@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Doctor : Person
+    public class Doctor : AbstractPerson
     {
         public DoctorType Type { get; set; } /*internist, dentist,...*/
 

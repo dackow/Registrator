@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Patient : Person
+    public class Patient : AbstractPerson
     {
         [Display(Name = "Płeć:")]
         public Sex Sex { get; set; }

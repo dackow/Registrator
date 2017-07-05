@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public abstract class Person
+    public abstract class AbstractPerson
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -21,12 +21,14 @@ namespace Model
         public string MiddleName { get; set; }
         [Display(Name = "Nazwisko:")]
         public string LastName { get; set; }
-
         [Display(Name = "Telefon kontaktowy:")]
+        [Phone]        
         public string Phone1 { get; set; }
         [Display(Name = "Telefon dodatkowy:")]
+        [Phone]        
         public string Phone2 { get; set; }
         [Display(Name = "Adres e-mail:")]
+        [EmailAddress]
         public string Email { get; set; }
         [Display(Name = "Ulica:")]
         public string Address1_Street { get; set; }
