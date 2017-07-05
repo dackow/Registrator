@@ -8,7 +8,7 @@ namespace Model.Abstract
 {
     interface IPatient
     {
-        IEnumerable<Person> GetAllPatients();
+        IEnumerable<Patient> GetAllPatients();
 
         Patient GetPatient(int id);
         Patient GetPatient(string pesel);

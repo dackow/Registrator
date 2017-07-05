@@ -15,7 +15,7 @@ namespace Model.Repositories
             ctx = context;
         }
 
-        public IEnumerable<Person> GetAllPatients()
+        public IEnumerable<Patient> GetAllPatients()
         {
             return ctx.Patients.ToList();
         }

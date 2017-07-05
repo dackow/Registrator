@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model.Initializer;
 using Model;
 using Model.Repositories;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace UnitTest
 {
@@ -22,8 +24,8 @@ namespace UnitTest
         [TestMethod]
         public void GetAllPatients_Test()
         {
-            //TODO
-
+            List<Patient> all = repo.GetAllPatients().ToList();;
+            Assert.AreEqual(3, all.Count());
         }
     }
 }
